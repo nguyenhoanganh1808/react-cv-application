@@ -65,7 +65,9 @@ export default function WorkField({ works, setWorks }) {
             onDelete={handleDelete}
           />
         ))}
-        <button onClick={addExperience}>+ Add experience</button>
+        <button className="add-btn" onClick={addExperience}>
+          + Add experience
+        </button>
       </FormContainer>
     </>
   );

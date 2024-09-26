@@ -66,7 +66,9 @@ export default function EducationField({ educations, handleEducationsChange }) {
             onDelete={handleDelete}
           />
         ))}
-        <button onClick={addEducation}>+ Add education</button>
+        <button className="add-btn" onClick={addEducation}>
+          + Add education
+        </button>
       </FormContainer>
     </>
   );

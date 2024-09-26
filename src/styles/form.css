@@ -98,3 +98,7 @@ button[type="submit"] {
     opacity: 1;
   }
 }
+
+.add-btn {
+  margin-top: 12px;
+}
