@@ -3,21 +3,21 @@ import WorkForm from "./WorkForm";
 import FormContainer from "./FormContainer";
 
 export default function WorkField({ works, setWorks }) {
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeId, setActiveId] = useState(-1);
 
-  function handleChangeFormVisibility(index) {
-    if (index === activeIndex) {
-      setActiveIndex(-1);
+  function handleChangeFormVisibility(id) {
+    if (id === activeId) {
+      setActiveId(-1);
     } else {
-      setActiveIndex(index);
+      setActiveId(id);
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e);
-    const newWorks = works.map((work, index) =>
-      index === activeIndex
+    const newWorks = works.map((work) =>
+      work.id === activeId
         ? {
             ...work,
             company: e.target.company.value,
@@ -28,37 +28,37 @@ export default function WorkField({ works, setWorks }) {
         : work
     );
     setWorks(newWorks);
-    setActiveIndex(-1);
+    setActiveId(-1);
   }
 
   function addExperience() {
     setWorks([
       ...works,
       {
-        id: works.length,
+        id: crypto.randomUUID(),
         school: "",
         degree: "",
         startDate: "",
         endDate: "",
       },
     ]);
-    setActiveIndex(works.length);
+    setActiveId(works[works.length].id);
   }
 
   function handleDelete(e) {
     e.preventDefault();
-    setWorks(works.filter((work) => work.id !== activeIndex));
-    setActiveIndex(-1);
+    setWorks(works.filter((work) => work.id !== activeId));
+    setActiveId(-1);
   }
 
   return (
     <>
       <FormContainer title="Experiences">
-        {works.map((work, index) => (
+        {works.map((work) => (
           <WorkForm
             key={work.id}
-            isActive={activeIndex === index}
-            onShow={() => handleChangeFormVisibility(index)}
+            isActive={activeId === work.id}
+            onShow={() => handleChangeFormVisibility(work.id)}
             work={work}
             onSubmit={handleSubmit}
             onDelete={handleDelete}

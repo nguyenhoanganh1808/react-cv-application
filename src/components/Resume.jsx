@@ -39,7 +39,7 @@ export default function Resume({ personalDetails, educations, works }) {
               return (
                 <Details
                   key={work.id}
-                  title={work.school}
+                  title={work.company}
                   description={work.position}
                   startDate={work.startDate}
                   endDate={work.endDate}

@@ -32,17 +32,18 @@ export default function EducationField({ educations, handleEducationsChange }) {
   }
 
   function addEducation() {
+    let newId = crypto.randomUUID();
     handleEducationsChange([
       ...educations,
       {
-        id: crypto.randomUUID(),
+        id: newId,
         school: "",
         degree: "",
         startDate: "",
         endDate: "",
       },
     ]);
-    setActiveId(educations[educations.length - 1].id);
+    setActiveId(newId);
   }
 
   function handleDelete(e) {
