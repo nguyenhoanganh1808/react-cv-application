@@ -3,21 +3,21 @@ import EducationForm from "./EducationForm";
 import FormContainer from "./FormContainer";
 
 export default function EducationField({ educations, handleEducationsChange }) {
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeId, setActiveId] = useState(-1);
 
-  function handleChangeFormVisibility(index) {
-    if (index === activeIndex) {
-      setActiveIndex(-1);
+  function handleChangeFormVisibility(id) {
+    if (id === activeId) {
+      setActiveId(-1);
     } else {
-      setActiveIndex(index);
+      setActiveId(id);
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e);
-    const newEducations = educations.map((education, index) =>
-      index === activeIndex
+    const newEducations = educations.map((education) =>
+      education.id === activeId
         ? {
             ...education,
             school: e.target.school.value,
@@ -28,38 +28,38 @@ export default function EducationField({ educations, handleEducationsChange }) {
         : education
     );
     handleEducationsChange(newEducations);
-    setActiveIndex(-1);
+    setActiveId(-1);
   }
 
   function addEducation() {
     handleEducationsChange([
       ...educations,
       {
-        id: educations.length,
+        id: crypto.randomUUID(),
         school: "",
         degree: "",
         startDate: "",
         endDate: "",
       },
     ]);
-    setActiveIndex(educations.length);
+    setActiveId(educations[educations.length - 1].id);
   }
 
   function handleDelete(e) {
     e.preventDefault();
     handleEducationsChange(
-      educations.filter((education) => education.id !== activeIndex)
+      educations.filter((education) => education.id !== activeId)
     );
   }
 
   return (
     <>
       <FormContainer title="Education">
-        {educations.map((education, index) => (
+        {educations.map((education) => (
           <EducationForm
             key={education.id}
-            isActive={activeIndex === index}
-            onShow={() => handleChangeFormVisibility(index)}
+            isActive={activeId === education.id}
+            onShow={() => handleChangeFormVisibility(education.id)}
             education={education}
             onSubmit={handleSubmit}
             onDelete={handleDelete}

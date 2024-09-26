@@ -14,14 +14,14 @@ function App() {
   });
   const [educations, setEducations] = useState([
     {
-      id: 0,
+      id: crypto.randomUUID(),
       school: "Harvard",
       degree: "Software Engineer",
       startDate: "2024-08",
       endDate: "2024-08",
     },
     {
-      id: 1,
+      id: crypto.randomUUID(),
       school: "Hogwarts",
       degree: "Wizard",
       startDate: "2024-08",
@@ -30,7 +30,7 @@ function App() {
   ]);
   const [works, setWorks] = useState([
     {
-      id: 0,
+      id: crypto.randomUUID(),
       company: "Umbrella Inc",
       position: "Software Engineer",
       startDate: "2024-08",

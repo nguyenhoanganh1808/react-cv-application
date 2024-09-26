@@ -48,6 +48,7 @@ export default function WorkField({ works, setWorks }) {
   function handleDelete(e) {
     e.preventDefault();
     setWorks(works.filter((work) => work.id !== activeIndex));
+    setActiveIndex(-1);
   }
 
   return (
