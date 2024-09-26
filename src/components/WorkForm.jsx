@@ -1,24 +1,43 @@
 import FormOverviewContainer from "./FormOverviewContainer";
 
-export default function EducationForm({
-  education,
+export default function WorkForm({
+  work,
   isActive,
   onShow,
   onSubmit,
 
   onDelete,
 }) {
-  const { school, degree, startDate, endDate } = education;
+  const { company, position, mainResponsibilities, startDate, endDate } = work;
   if (isActive) {
     return (
       <form onSubmit={onSubmit} id="education" action="">
         <div>
-          <label htmlFor="school">School</label>
-          <input defaultValue={school} type="text" id="school" name="school" />
+          <label htmlFor="company">Company</label>
+          <input
+            defaultValue={company}
+            type="text"
+            id="company"
+            name="company"
+          />
         </div>
         <div>
-          <label htmlFor="degree">Degree</label>
-          <input defaultValue={degree} type="text" id="degree" name="degree" />
+          <label htmlFor="position">Position</label>
+          <input
+            defaultValue={position}
+            type="text"
+            id="position"
+            name="position"
+          />
+        </div>
+        <div>
+          <label htmlFor="responsibility">Main Responsibilities</label>
+          <input
+            defaultValue={mainResponsibilities}
+            type="text"
+            id="responsibility"
+            name="responsibility"
+          />
         </div>
         <div>
           <label htmlFor="startDate">Start Date</label>
@@ -49,7 +68,7 @@ export default function EducationForm({
   return (
     <>
       <div onClick={onShow} className="education-inactive">
-        <FormOverviewContainer title={school} description={degree} />
+        <FormOverviewContainer title={company} description={position} />
       </div>
     </>
   );

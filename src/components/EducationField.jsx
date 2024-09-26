@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EducationForm from "./EducationForm";
+import FormContainer from "./FormContainer";
 
 export default function EducationField({ educations, handleEducationsChange }) {
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -12,13 +13,22 @@ export default function EducationField({ educations, handleEducationsChange }) {
     }
   }
 
-  function handleFieldChange(e) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
     const newEducations = educations.map((education, index) =>
       index === activeIndex
-        ? { ...education, [e.target.name]: e.target.value }
+        ? {
+            ...education,
+            school: e.target.school.value,
+            degree: e.target.degree.value,
+            startDate: e.target.startDate.value,
+            endDate: e.target.endDate.value,
+          }
         : education
     );
     handleEducationsChange(newEducations);
+    setActiveIndex(-1);
   }
 
   function addEducation() {
@@ -28,25 +38,35 @@ export default function EducationField({ educations, handleEducationsChange }) {
         id: educations.length,
         school: "",
         degree: "",
-        startDate: null,
-        endDate: null,
+        startDate: "",
+        endDate: "",
       },
     ]);
+    setActiveIndex(educations.length);
+  }
+
+  function handleDelete(e) {
+    e.preventDefault();
+    handleEducationsChange(
+      educations.filter((education) => education.id !== activeIndex)
+    );
   }
 
   return (
     <>
-      <h2>Education</h2>
-      {educations.map((education, index) => (
-        <EducationForm
-          key={education.id}
-          isActive={activeIndex === index}
-          onShow={() => handleChangeFormVisibility(index)}
-          education={education}
-          onChange={handleFieldChange}
-        />
-      ))}
-      <button onClick={addEducation}>+ Add education</button>
+      <FormContainer title="Education">
+        {educations.map((education, index) => (
+          <EducationForm
+            key={education.id}
+            isActive={activeIndex === index}
+            onShow={() => handleChangeFormVisibility(index)}
+            education={education}
+            onSubmit={handleSubmit}
+            onDelete={handleDelete}
+          />
+        ))}
+        <button onClick={addEducation}>+ Add education</button>
+      </FormContainer>
     </>
   );
 }

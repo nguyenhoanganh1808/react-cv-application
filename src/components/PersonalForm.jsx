@@ -37,6 +37,7 @@ export default function Form({ personalDetails, onChange }) {
             name="phone"
             onChange={onChange}
           />
+          <span></span>
         </div>
       </form>
     </>

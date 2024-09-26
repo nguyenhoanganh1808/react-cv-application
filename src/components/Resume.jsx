@@ -22,8 +22,8 @@ export default function Resume({ personalDetails, educations }) {
               key={education.id}
               title={education.school}
               description={education.degree}
-              // startDate={education.startDate}
-              // endDate={education.endDate}
+              startDate={education.startDate}
+              endDate={education.endDate}
             />
           );
         })}

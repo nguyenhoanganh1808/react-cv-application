@@ -64,3 +64,8 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+.sectionField {
+  padding: 32px;
+  box-shadow: 0px 0px 4px 4px #e2e8f0;
+}

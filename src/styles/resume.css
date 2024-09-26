@@ -18,5 +18,15 @@ hr {
   padding: 8px;
   font-weight: normal;
   font-size: 1.3rem;
-  margin-bottom: 12px;
+  margin: 12px 0px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
 }

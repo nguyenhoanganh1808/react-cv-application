@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import Form from "./components/PersonalForm";
+import PersonalForm from "./components/PersonalForm";
 import Resume from "./components/Resume";
 
 import EducationField from "./components/EducationField";
+import WorkField from "./components/WorkField";
 
 function App() {
   const [personalDetails, setPersonalDetails] = useState({
@@ -16,15 +17,33 @@ function App() {
       id: 0,
       school: "UIT",
       degree: "Software Engineer",
-      startDate: "08-2024",
-      endDate: new Date(2024, 8),
+      startDate: "2024-08",
+      endDate: "2024-08",
     },
     {
       id: 1,
       school: "HCMUS",
       degree: "Software Engineer",
-      startDate: new Date(2024, 8),
-      endDate: new Date(2024, 8),
+      startDate: "2024-08",
+      endDate: "2024-08",
+    },
+  ]);
+  const [works, setWorks] = useState([
+    {
+      id: 0,
+      company: "Cac Inc",
+      position: "Software Engineer",
+      mainResponsibility: "Chien trung",
+      startDate: "2024-08",
+      endDate: "2024-08",
+    },
+    {
+      id: 1,
+      company: "Nhon so Inc",
+      position: "Dao canh",
+      mainResponsibility: "Chien ga",
+      startDate: "2024-08",
+      endDate: "2024-08",
     },
   ]);
 
@@ -42,12 +61,16 @@ function App() {
 
   return (
     <>
-      <div>
-        <Form personalDetails={personalDetails} onChange={handleChange} />
+      <div className="sectionField">
+        <PersonalForm
+          personalDetails={personalDetails}
+          onChange={handleChange}
+        />
         <EducationField
           educations={educations}
           handleEducationsChange={handleEducationsChange}
         />
+        <WorkField works={works} setWorks={setWorks} />
       </div>
 
       <Resume personalDetails={personalDetails} educations={educations} />
