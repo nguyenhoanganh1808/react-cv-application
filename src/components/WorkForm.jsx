@@ -5,10 +5,9 @@ export default function WorkForm({
   isActive,
   onShow,
   onSubmit,
-
   onDelete,
 }) {
-  const { company, position, mainResponsibilities, startDate, endDate } = work;
+  const { company, position, startDate, endDate } = work;
   if (isActive) {
     return (
       <form onSubmit={onSubmit} id="education" action="">
@@ -30,15 +29,7 @@ export default function WorkForm({
             name="position"
           />
         </div>
-        <div>
-          <label htmlFor="responsibility">Main Responsibilities</label>
-          <input
-            defaultValue={mainResponsibilities}
-            type="text"
-            id="responsibility"
-            name="responsibility"
-          />
-        </div>
+
         <div>
           <label htmlFor="startDate">Start Date</label>
           <input

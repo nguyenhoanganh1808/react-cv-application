@@ -15,14 +15,14 @@ function App() {
   const [educations, setEducations] = useState([
     {
       id: 0,
-      school: "UIT",
+      school: "Harvard",
       degree: "Software Engineer",
       startDate: "2024-08",
       endDate: "2024-08",
     },
     {
       id: 1,
-      school: "HCMUS",
+      school: "Oxford",
       degree: "Software Engineer",
       startDate: "2024-08",
       endDate: "2024-08",
@@ -33,7 +33,6 @@ function App() {
       id: 0,
       company: "Cac Inc",
       position: "Software Engineer",
-      mainResponsibility: "Chien trung",
       startDate: "2024-08",
       endDate: "2024-08",
     },
@@ -41,7 +40,6 @@ function App() {
       id: 1,
       company: "Nhon so Inc",
       position: "Dao canh",
-      mainResponsibility: "Chien ga",
       startDate: "2024-08",
       endDate: "2024-08",
     },
@@ -73,7 +71,11 @@ function App() {
         <WorkField works={works} setWorks={setWorks} />
       </div>
 
-      <Resume personalDetails={personalDetails} educations={educations} />
+      <Resume
+        personalDetails={personalDetails}
+        educations={educations}
+        works={works}
+      />
     </>
   );
 }

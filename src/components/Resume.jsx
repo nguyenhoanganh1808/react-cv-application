@@ -1,7 +1,7 @@
 import "../styles/resume.css";
 import Details from "./Details";
 
-export default function Resume({ personalDetails, educations }) {
+export default function Resume({ personalDetails, educations, works }) {
   const { name, email, phone } = personalDetails;
 
   return (
@@ -15,18 +15,39 @@ export default function Resume({ personalDetails, educations }) {
         </p>
       </div>
       <div>
-        <h2 className="sectionHeader">EDUCATION</h2>
-        {educations.map((education) => {
-          return (
-            <Details
-              key={education.id}
-              title={education.school}
-              description={education.degree}
-              startDate={education.startDate}
-              endDate={education.endDate}
-            />
-          );
-        })}
+        {educations && (
+          <>
+            <h2 className="sectionHeader">EDUCATION</h2>
+            {educations.map((education) => {
+              return (
+                <Details
+                  key={education.id}
+                  title={education.school}
+                  description={education.degree}
+                  startDate={education.startDate}
+                  endDate={education.endDate}
+                />
+              );
+            })}
+          </>
+        )}
+
+        {works && (
+          <>
+            <h2 className="sectionHeader">EXPERIENCES</h2>
+            {works.map((work) => {
+              return (
+                <Details
+                  key={work.id}
+                  title={work.school}
+                  description={work.position}
+                  startDate={work.startDate}
+                  endDate={work.endDate}
+                />
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );
