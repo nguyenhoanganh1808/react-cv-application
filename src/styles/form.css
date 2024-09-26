@@ -1,0 +1,44 @@
+#personalDetails,
+#education {
+  padding: 32px;
+  border: 1px solid black;
+}
+
+#personalDetails > div,
+#education > div {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 12px;
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: var(--input-color);
+  padding: 4px 12px;
+  line-height: 1.5;
+
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+input:focus,
+input:target {
+  outline: 2px solid #7c3aed;
+}
+
+label {
+  font-weight: bold;
+  color: var(--label-color);
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.education-inactive {
+  border: 1px solid black;
+}

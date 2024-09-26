@@ -1,0 +1,22 @@
+.resume-container {
+  padding: 16px 32px;
+
+  box-shadow: 0px 0px 8px 4px #cbd5e1;
+  color: black;
+}
+
+hr {
+  border-top: 5px solid black;
+  margin: 32px 0px;
+}
+
+.sectionHeader {
+  background-color: black;
+  color: white;
+  width: fit-content;
+
+  padding: 8px;
+  font-weight: normal;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
