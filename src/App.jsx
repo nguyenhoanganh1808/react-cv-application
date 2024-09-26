@@ -31,15 +31,8 @@ function App() {
   const [works, setWorks] = useState([
     {
       id: 0,
-      company: "Cac Inc",
+      company: "Umbrella Inc",
       position: "Software Engineer",
-      startDate: "2024-08",
-      endDate: "2024-08",
-    },
-    {
-      id: 1,
-      company: "Nhon so Inc",
-      position: "Dao canh",
       startDate: "2024-08",
       endDate: "2024-08",
     },

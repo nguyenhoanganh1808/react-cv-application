@@ -15,7 +15,7 @@ export default function Resume({ personalDetails, educations, works }) {
         </p>
       </div>
       <div>
-        {educations && (
+        {educations.length > 0 && (
           <>
             <h2 className="sectionHeader">EDUCATION</h2>
             {educations.map((education) => {
@@ -32,7 +32,7 @@ export default function Resume({ personalDetails, educations, works }) {
           </>
         )}
 
-        {works && (
+        {works.length > 0 && (
           <>
             <h2 className="sectionHeader">EXPERIENCES</h2>
             {works.map((work) => {
