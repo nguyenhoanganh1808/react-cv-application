@@ -32,17 +32,18 @@ export default function WorkField({ works, setWorks }) {
   }
 
   function addExperience() {
+    let newId = crypto.randomUUID();
     setWorks([
       ...works,
       {
-        id: crypto.randomUUID(),
+        id: newId,
         school: "",
         degree: "",
         startDate: "",
         endDate: "",
       },
     ]);
-    setActiveId(works[works.length].id);
+    setActiveId(newId);
   }
 
   function handleDelete(e) {
