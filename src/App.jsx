@@ -22,8 +22,8 @@ function App() {
     },
     {
       id: 1,
-      school: "Oxford",
-      degree: "Software Engineer",
+      school: "Hogwarts",
+      degree: "Wizard",
       startDate: "2024-08",
       endDate: "2024-08",
     },
