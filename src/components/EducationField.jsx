@@ -1,24 +1,8 @@
 import { useState } from "react";
 import EducationForm from "./EducationForm";
 
-export default function EducationField() {
+export default function EducationField({ educations, handleEducationsChange }) {
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [schools, setSchool] = useState([
-    {
-      id: 0,
-      school: "UIT",
-      degree: "Software Engineer",
-      startDate: new Date(2024, 8),
-      endDate: new Date(2024, 8),
-    },
-    {
-      id: 1,
-      school: "HEHEHE",
-      degree: "Software Engineer",
-      startDate: new Date(2024, 8),
-      endDate: new Date(2024, 8),
-    },
-  ]);
 
   function handleChangeFormVisibility(index) {
     if (index === activeIndex) {
@@ -29,20 +13,40 @@ export default function EducationField() {
   }
 
   function handleFieldChange(e) {
-    const newSchools = [];
+    const newEducations = educations.map((education, index) =>
+      index === activeIndex
+        ? { ...education, [e.target.name]: e.target.value }
+        : education
+    );
+    handleEducationsChange(newEducations);
+  }
+
+  function addEducation() {
+    handleEducationsChange([
+      ...educations,
+      {
+        id: educations.length,
+        school: "",
+        degree: "",
+        startDate: null,
+        endDate: null,
+      },
+    ]);
   }
 
   return (
     <>
       <h2>Education</h2>
-      {schools.map((school, index) => (
+      {educations.map((education, index) => (
         <EducationForm
-          key={school.id}
-          isActive={true}
+          key={education.id}
+          isActive={activeIndex === index}
           onShow={() => handleChangeFormVisibility(index)}
-          education={school}
+          education={education}
+          onChange={handleFieldChange}
         />
       ))}
+      <button onClick={addEducation}>+ Add education</button>
     </>
   );
 }

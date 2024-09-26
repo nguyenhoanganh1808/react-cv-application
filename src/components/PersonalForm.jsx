@@ -5,20 +5,38 @@ export default function Form({ personalDetails, onChange }) {
   return (
     <>
       <h2>Personal Details</h2>
-      <form onChange={onChange} id="personalDetails" action="">
+      <form id="personalDetails" action="">
         <div>
           <label htmlFor="name">Name</label>
-          <input value={name} type="text" id="name" name="name" />
+          <input
+            value={name}
+            type="text"
+            id="name"
+            name="name"
+            onChange={onChange}
+          />
         </div>
 
         <div>
           <label htmlFor="email">Email address</label>
-          <input value={email} type="email" id="email" name="email" />
+          <input
+            value={email}
+            type="email"
+            id="email"
+            name="email"
+            onChange={onChange}
+          />
         </div>
 
         <div>
           <label htmlFor="phone">Phone number</label>
-          <input value={phone} type="tel" id="phone" name="phone" />
+          <input
+            value={phone}
+            type="tel"
+            id="phone"
+            name="phone"
+            onChange={onChange}
+          />
         </div>
       </form>
     </>

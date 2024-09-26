@@ -11,6 +11,26 @@ function App() {
     email: "john@gmail.com",
     phone: "123445",
   });
+  const [educations, setEducations] = useState([
+    {
+      id: 0,
+      school: "UIT",
+      degree: "Software Engineer",
+      startDate: "08-2024",
+      endDate: new Date(2024, 8),
+    },
+    {
+      id: 1,
+      school: "HCMUS",
+      degree: "Software Engineer",
+      startDate: new Date(2024, 8),
+      endDate: new Date(2024, 8),
+    },
+  ]);
+
+  function handleEducationsChange(newEducations) {
+    setEducations(newEducations);
+  }
 
   function handleChange(e) {
     const newPersonalDetails = {
@@ -24,10 +44,13 @@ function App() {
     <>
       <div>
         <Form personalDetails={personalDetails} onChange={handleChange} />
-        <EducationField />
+        <EducationField
+          educations={educations}
+          handleEducationsChange={handleEducationsChange}
+        />
       </div>
 
-      <Resume personalDetails={personalDetails} />
+      <Resume personalDetails={personalDetails} educations={educations} />
     </>
   );
 }

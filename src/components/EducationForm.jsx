@@ -1,15 +1,32 @@
-export default function EducationForm({ education, isActive, onShow }) {
+export default function EducationForm({
+  education,
+  isActive,
+  onShow,
+  onChange,
+}) {
   const { school, degree, startDate, endDate } = education;
   if (isActive) {
     return (
-      <form onClick={onShow} id="education" action="">
+      <form id="education" action="">
         <div>
           <label htmlFor="school">School</label>
-          <input value={school} type="text" id="school" name="school" />
+          <input
+            onChange={onChange}
+            value={school}
+            type="text"
+            id="school"
+            name="school"
+          />
         </div>
         <div>
           <label htmlFor="degree">Degree</label>
-          <input value={degree} type="text" id="degree" name="degree" />
+          <input
+            onChange={onChange}
+            value={degree}
+            type="text"
+            id="degree"
+            name="degree"
+          />
         </div>
         <div>
           <label htmlFor="startDate">Start Date</label>
@@ -18,11 +35,18 @@ export default function EducationForm({ education, isActive, onShow }) {
             type="month"
             id="startDate"
             name="startDate"
+            onChange={onChange}
           />
         </div>
         <div>
           <label htmlFor="endDate">End Date</label>
-          <input value={endDate} type="month" id="endDate" name="endDate" />
+          <input
+            onChange={onChange}
+            value={endDate}
+            type="month"
+            id="endDate"
+            name="endDate"
+          />
         </div>
       </form>
     );
